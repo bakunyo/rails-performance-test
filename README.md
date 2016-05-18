@@ -1,28 +1,49 @@
-== README
+# rails-performance-test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## purpose
+To test performance tools, this app contains N+1 problems and multi view renders.
 
-Things you may want to cover:
+## source
+```
+# models
+class User < ActiveRecord::Base
+  has_many :posts
+  has_many :comments
+end
 
-* Ruby version
+class Post < ActiveRecord::Base
+  belongs_to :user
+  has_many :comments
+end
 
-* System dependencies
+class Comment < ActiveRecord::Base
+  belongs_to :post
+  belongs_to :user
+end
 
-* Configuration
+# controller(1 action)
+class RootController < ApplicationController
+  def index
+    # NOT includes any
+    @users = User.all
+  end
+end
 
-* Database creation
+# views
+## index.html.slim
+ul
+- @users.each do |user|
+  li = user.name
+  == render partial: 'root/posts', locals: { posts: user.posts }
 
-* Database initialization
+## _posts.html.slim
+ul
+  - posts.each do |post|
+    li = post.title
+    == render partial: 'root/comments', locals: { comments: post.comments }
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## _comments.html.slim
+ul
+  - comments.each do |comment|
+    li = comment.body
+```
