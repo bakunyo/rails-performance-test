@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Comment.destroy_all
+Post.destroy_all
+User.destroy_all
+
+100.times do |i|
+  user = FactoryGirl.create(:user)  
+  100.times do |j|
+    post = FactoryGirl.create(:post, user: user)
+    FactoryGirl.create(:comment, post: post, user: user)
+  end
+end
