@@ -40,6 +40,7 @@ group :development, :test do
 
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'activerecord-cause'
 end
 
 group :development do
