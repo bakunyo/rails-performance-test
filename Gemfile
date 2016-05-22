@@ -40,6 +40,8 @@ group :development, :test do
 
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'peek'
+  gem 'peek-rblineprof'
 end
 
 group :development do
