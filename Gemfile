@@ -42,6 +42,7 @@ group :development, :test do
   gem 'faker'
   gem 'peek'
   gem 'peek-rblineprof'
+  gem 'pygments.rb', :require => false
 end
 
 group :development do
