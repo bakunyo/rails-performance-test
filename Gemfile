@@ -40,6 +40,7 @@ group :development, :test do
 
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'rack-mini-profiler'
 end
 
 group :development do
