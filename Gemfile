@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'slim-rails'
 
+gem 'peek-rblineprof', git: 'git@github.com:bakunyo/peek-rblineprof.git', branch: 'require-peek'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
